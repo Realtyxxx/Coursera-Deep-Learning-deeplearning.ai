@@ -36,7 +36,7 @@
 
 由上面我们可以总结出，在神经网络中，我们以相邻两层为观测对象，前面一层作为输入，后面一层作为输出，两层之间的$w$参数矩阵大小为 $(n_{out},n_{in})$ ，$b$参数矩阵大小为 $(n_{out},1)$ ，这里是作为 $z = wX+b$ 的线性关系来说明的，在神经网络中， $w^{[i]}=w^{T}$ 。  
 
-在logistic regression中，一般我们都会用 $(n_{in},n_{out})$ 来表示参数大小，计算使用的公式为：$ z = w^{T}X+b$ ，要注意这两者的区别。
+在logistic regression中，一般我们都会用 $(n_{in},n_{out})$ 来表示参数大小，计算使用的公式为：$z = w^{T}X+b$ ，要注意这两者的区别。
 
 ## 神经网络输出
 
@@ -108,17 +108,17 @@ $$A^{[2]}=\sigma(Z^{[2]})$$
 
 可供选用的激活函数有：
 
-* tanh 函数（the hyperbolic tangent function，双曲正切函数）：$$a = \frac{e^z - e^{-z}}{e^z + e^{-z}}$$
+* tanh 函数（the hyperbolic tangent function，双曲正切函数）：$a = \frac{e^z - e^{-z}}{e^z + e^{-z}}$
 
 效果几乎总比 sigmoid 函数好（除开 **二元分类的输出层** ，因为我们希望输出的结果介于 0 到 1 之间），因为函数输出介于 -1 和 1 之间，激活函数的平均值就更接近 0，有类似数据中心化的效果。
 
 然而，tanh 函数存在和 sigmoid 函数一样的缺点：当 $z$ 趋紧无穷大（或无穷小），导数的梯度（即函数的斜率）就趋紧于 0，这使得梯度算法的速度大大减缓。
 
-* **ReLU 函数（the rectified linear unit，修正线性单元）** ：$$a=max(0,z)$$
+* **ReLU 函数（the rectified linear unit，修正线性单元）** ：$a=max(0,z)$
 
 当 $z > 0$ 时，梯度始终为 1，从而提高神经网络基于梯度算法的运算速度，收敛速度远大于 sigmoid 和 tanh。然而当 $z < 0$ 时，梯度一直为 0，但是实际的运用中，该缺陷的影响不是很大。
 
-* Leaky ReLU（带泄漏的 ReLU）：$$a=max(0.01z,z)$$
+* Leaky ReLU（带泄漏的 ReLU）：$a=max(0.01z,z)$
 
 Leaky ReLU 保证在 $z < 0$ 的时候，梯度仍然不为 0。理论上来说，Leaky ReLU 有 ReLU 的所有优点，但在实际操作中没有证明总是好于 ReLU，因此不常用。
 
