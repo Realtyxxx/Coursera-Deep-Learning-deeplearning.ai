@@ -26,7 +26,7 @@ Logistic 回归中使用的参数如下：
 * 权重：$w \in R^{n_x}$
 * 偏置： $b \in R$
 * 输出：$\hat{y} = \sigma(w^Tx+b)$
-* Sigmoid 函数：$$s = \sigma(w^Tx+b) = \sigma(z) = \frac{1}{1+e^{-z}}$$
+* Sigmoid 函数：$s = \sigma(w^Tx+b) = \sigma(z) = \frac{1}{1+e^{-z}}$
 
 为将 $w^Tx+b$ 约束在 $[0, 1]$ 间，引入 Sigmoid 函数，Sigmoid 函数的值域为 $[0, 1]$。
 
@@ -38,11 +38,11 @@ Logistic 回归可以看作是一个非常小的神经网络。下图是一个�
 
 **损失函数（loss function）** 用于衡量预测结果与真实值之间的误差。
 
-最简单的损失函数定义方式为平方差损失：$$L(\hat{y},y) = \frac{1}{2}(\hat{y}-y)^2$$
+最简单的损失函数定义方式为平方差损失：$L(\hat{y},y) = \frac{1}{2}(\hat{y}-y)^2$
 
 这是因为上面的平方错误损失函数一般是非凸函数（non-convex），其在使用低度下降算法的时候，容易得到局部最优解，而不是全局最优解。因此要选择凸函数。
 
-一般使用$$L(\hat{y},y) = -(y\log\hat{y})+(1-y)\log(1-\hat{y})$$
+一般使用$L(\hat{y},y) = -(y\log\hat{y})+(1-y)\log(1-\hat{y})$
 
 - 当 $y=1$ 时，$ L(\hat y, y)=-\log \hat y$ 。如果 $\hat y $越接近 1， $L(\hat y, y) \approx 0$ ，表示预测效果越好；如果 $\hat y$ 越接近 0， $L(\hat y, y) \approx +\infty$ ，表示预测效果越差；
 - 当 $y=0$ 时， $L(\hat y, y)=-\log (1-\hat y)$ 。如果 $\hat y$ 越接近 0， $L(\hat y, y) \approx 0$ ，表示预测效果越好；如果 $\hat y$ 越接近 1， $L(\hat y, y) \approx +\infty$ ，表示预测效果越差；
@@ -65,7 +65,7 @@ $$J(w,b) = \frac{1}{m}\sum_{i=1}^mL(\hat{y}^{(i)},y^{(i)})$$
 
 参数 $w$ 的更新公式为：
 
-$$w := w - \alpha\frac{dJ(w, b)}{dw}$$
+$w := w - \alpha\frac{dJ(w, b)}{dw}$
 
 其中 $α$ 表示学习速率，即每次更新的 $w$ 的步伐长度。
 
@@ -123,7 +123,7 @@ $$db = \dfrac{1}{m}\sum_{i=1}^{m}(a^{(i)}-y^{(i)}) $$
 
 ## 向量化
 
-在 Logistic 回归中，需要计算 $$z=w^Tx+b$$如果是非向量化的循环方式操作，代码可能如下：
+在 Logistic 回归中，需要计算 $z=w^Tx+b$如果是非向量化的循环方式操作，代码可能如下：
 
 ```py
 z = 0;
